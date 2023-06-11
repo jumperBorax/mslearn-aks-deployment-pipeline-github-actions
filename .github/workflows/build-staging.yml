@@ -61,7 +61,7 @@ jobs:
       - name: Get AKS Credentials
         uses: Azure/k8s-set-context@v3.0
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}     
+          creds: ${{ secrets.AZURE_CREDENTIALS }}    
           resource-group: mslearn-gh-pipelines-9644
           cluster-name: contoso-video 
           
