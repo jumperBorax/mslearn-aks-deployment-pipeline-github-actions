@@ -63,7 +63,7 @@ jobs:
       #   with:
       #     creds: ${{ secrets.AZURE_CREDENTIALS }}    
       #     resource-group: ${{ secrets.RG_NAME }}
-      #     cluster-name: contoso-video
+      #     cluster-name: contoso-video 
        
       - name: Azure Login
         uses: Azure/login@v1.4.6
