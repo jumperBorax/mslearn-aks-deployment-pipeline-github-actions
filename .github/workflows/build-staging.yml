@@ -64,7 +64,18 @@ jobs:
       #     creds: ${{ secrets.AZURE_CREDENTIALS }}    
       #     resource-group: ${{ secrets.RG_NAME }}
       #     cluster-name: contoso-video
+       
+      - name: Azure Login
+        uses: Azure/login@v1.4.6
+        with:
+          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+          # ClientId of the Azure Service principal created.
+          #tenant-id: # optional
+          # Azure subscriptionId
+          #subscription-id: # optional
           
+       
       - name: Get AKS Credentials
         uses: Azure/aks-set-context@v3
         with:
@@ -73,7 +84,7 @@ jobs:
           # AKS Cluster Name
           cluster-name: contoso-video
           # AKS Cluster Subscription
-          subscription: ${{ secrets.AZURE_CREDENTIALS }}  
+          #subscription: ${{ secrets.AZURE_CREDENTIALS }}  
           # Get cluster admin credentials. Values: true or false
           # admin: # optional
           # Enables kubelogin for non-admin user scenario. Values: true or false
