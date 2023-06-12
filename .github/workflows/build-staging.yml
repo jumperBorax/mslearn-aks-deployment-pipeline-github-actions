@@ -58,13 +58,7 @@ jobs:
           # Version of helm
           version: v3.3.1
           
-      # - name: Get AKS Credentials
-      #   uses: Azure/k8s-set-context@v3.0
-      #   with:
-      #     creds: ${{ secrets.AZURE_CREDENTIALS }}    
-      #     resource-group: ${{ secrets.RG_NAME }}
-      #     cluster-name: contoso-video 
-       
+          
       - name: Azure Login
         uses: Azure/login@v1.4.6
         with:
