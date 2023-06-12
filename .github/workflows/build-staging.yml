@@ -58,12 +58,26 @@ jobs:
           # Version of helm
           version: v3.3.1
           
+      # - name: Get AKS Credentials
+      #   uses: Azure/k8s-set-context@v3.0
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }}    
+      #     resource-group: ${{ secrets.RG_NAME }}
+      #     cluster-name: contoso-video
+          
       - name: Get AKS Credentials
-        uses: Azure/k8s-set-context@v3.0
+        uses: Azure/aks-set-context@v3
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}    
-          resource-group: mslearn-gh-pipelines-9644
-          cluster-name: contoso-video 
+          # Resource Group Name
+          resource-group: ${{ secrets.RG_NAME }}
+          # AKS Cluster Name
+          cluster-name: contoso-video
+          # AKS Cluster Subscription
+          # subscription: # optional
+          # Get cluster admin credentials. Values: true or false
+          # admin: # optional
+          # Enables kubelogin for non-admin user scenario. Values: true or false
+          # use-kubelogin: # optional    
           
           
       - name: Run Helm Deploy
@@ -78,4 +92,3 @@ jobs:
             ./kubernetes/contoso-website \
             --set image.repository=${{ secrets.ACR_NAME }} \
             --set dns.name=${{ secrets.DNS_NAME }}
-        
