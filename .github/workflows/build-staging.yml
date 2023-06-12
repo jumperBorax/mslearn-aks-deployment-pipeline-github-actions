@@ -73,7 +73,7 @@ jobs:
           # AKS Cluster Name
           cluster-name: contoso-video
           # AKS Cluster Subscription
-          # subscription: # optional
+          subscription: ${{ secrets.AZURE_CREDENTIALS }}  
           # Get cluster admin credentials. Values: true or false
           # admin: # optional
           # Enables kubelogin for non-admin user scenario. Values: true or false
