@@ -13,7 +13,11 @@ spec:
         app: contoso-website
     spec:
       containers:
-        - image: {{ .Variables.image.registry }}.azurecr.io/{{ .Values.image.name }}:{{ default "latest" .Variables.image.tag }}
+        {{- if hasKey .Values.image "registry" }} 
+        - image: {{ .Values.image.registry }}.azurecr.io/{{ .Values.image.name }}:{{ default "latest" .Values.image.tag }}
+        {{- else }}
+        - image: contosocontainerregistry11746.azurecr.io/contoso-website:latest
+        {{- end }}
           name: contoso-website
           resources:
             requests:
